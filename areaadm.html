@@ -1,0 +1,349 @@
+<?php
+//conecte-se ao banco de dados MySQL
+$mysqli = new mysqli("localhost", "root", "", "instituto_ifollow");
+
+// Verifica a conexão
+if ($mysqli->connect_error) {
+    die("Conexão falhou: " . $mysqli->connect_error);
+}
+
+// Consulta para obter os assistentes cadastrados
+$sql = "SELECT id_Assistente, Nome_Completo_Assistente FROM assistente"; // Substitua 'tabela_de_assistentes' pelo nome correto da tabela
+
+$result = $mysqli->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Ifollow</title>
+
+    <!-- Links -->
+    <link href="../css/login.css" rel="stylesheet">
+    <link href="../css/administrador.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="../fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- header -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <a href="index.php"><img src="../imgs/afoloulogobranca.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link" href="../html/index.html">Home</a></li>
+          <li><a class="nav-link" href="../html/adote.html">Adote</a></li>
+          <li><a class="nav-link" href="../html/apadrinhe.html">Apadrinhe</a></li>
+          
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header>
+  <!--final header--> 
+
+  <div class="mainadm">
+    <div class="icon">
+        <img src="../imgs/administrador.jpg" alt="" class="img-fluid">
+    </div>
+    <h1>Olá, Administrador!</h1>
+    <h3> O que deseja fazer?</h3>
+    <div class="d-grid gap-2">
+        <button class="adminpopup" id="admin-assistente" type="button">Gerenciar Assistentes</button>
+        <button class="animalpopup" type="admin-animais">Gerenciar Animais</button>
+        <button class="consultapopup" type="admin-consulta">Consultar</button>
+      </div>
+  </div>
+
+  <!-- GERENCIAR ASSISTENTE-->
+
+  <div class="wrapper-adm">
+    <span class="icon-fecharAdm"><i class="fa-solid fa-xmark"></i></span>
+    <div class="form-box-adm remover">
+        <h2>Remover Assistente</h2>
+        <form action="remover_assistente.php" method="POST">
+        <i class="fa-solid fa-chevron-down" style="position: relative; left: 270px; top: 78px;"></i>
+            <select class="form-select" id="inputGroupSelect01">
+                <i class="fa-solid fa-chevron-down"></i>
+                <option selected>Selecione o assistente</option>
+                <?php
+                // Exibir as opções do select com os assistentes
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row["id_Assistente"] . "'>" . $row["Nome_Completo_Assistente"] . "</option>";
+                    }
+                } 
+                
+                else {
+                    echo "<option value=''>Nenhum assistente cadastrado</option>";
+                }
+                // Fecha a conexão com o banco de dados
+                $mysqli->close();
+                ?>
+            </select>
+            
+            <button type="submit" class="btn" id="btnAdm">Remover</button>
+            <div class="cadastrar-adm">
+                <p>Outras opções: <a href="#" class="link-cadastrarAdm">Cadastrar Assistente</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-box-adm cadastrar-adm">
+        <h2>Cadastre-se</h2>
+        <form method="POST" action="banco_login-cadastro_assistente.php">
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+                <input id="Nome_Completo_Assistente" name="Nome_Completo_Assistente" type="text" required>
+                <label for="Nome_Completo_Assistente">Nome Completo</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-user"></i></span>
+                <input id="Nome_Usuario_Assistente" name="Nome_Usuario_Assistente" type="text" required>
+                <label for="Nome_Usuario_Assistente">Usuário</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-at"></i></span>
+                <input id="Email_Assistente" name="Email_Assistente" type="email" required>
+                <label for="Email_Assistente">E-mail</label>
+            </div>
+            <div class="input-box">
+                <input name="Data_Nasc_Assistente" id="Data_Nasc_Assistente" type="date" required>
+                <label id="lblData" for="Data_Nasc_Assistente">Data de Nascimento</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-id-card"></i></span>
+                <input id="CPF_Assistente" name="CPF_Assistente" type="number" required>
+                <label for="CPF_Assistente">CPF</label>
+            </div>
+            <div class="input-box">
+                <input name="RG_Assistente" id="RG_Assistente" type="text" maxlength="14" required>
+                <label for="RG_Assistente">RG</label>
+            </div>
+            <div class="input-box-genero">
+                <h6>Gênero</h6>
+                <div class="radio-genero">
+                    <input type="radio" id="GeneroF_Assistente" name="Genero_Assistente" value="Feminino" required />
+                    <label for="GeneroF_Assistente">Feminino</label>
+                </div>
+
+                <div class="radio-genero">
+                <input type="radio" id="GeneroM_Assistente" name="Genero_Assistente" value="Masculino" required />
+                    <label for="GeneroM_Assistente">Masculino</label>
+                </div>
+
+                <div class="radio-genero">
+                    <input type="radio" id="GeneroX_Assistente" name="Genero_Assistente" value="Prefiro não dizer" required />
+                    <label for="GeneroX_Assistente">Prefiro não dizer</label>
+                </div>
+
+                <div class="radio-genero">
+                    <input type="radio" id="GeneroO_Assistente" name="Genero_Assistente" value="Outros" required />
+                    <label for="GeneroO_Assistente">Outros</label>
+                </div>
+            </div>
+            <div class="input-box">
+                <input name="CEP_Assistente" id="CEP_Assistente" type="text" maxlength="9" required>
+                <label for="CEP_Assistente">CEP</label>
+            </div>
+            <div class="input-box">
+                <input name="Rua_Assistente" id="Rua_Assistente" type="text" required>
+                <label for="Rua_Assistente">Rua</label>
+            </div>
+            <div class="input-box">
+                <input name="Numero_Assistente" id="Numero_Assistente" type="text" maxlength="11" required>
+                <label for="Numero_Assistente">Número</label>
+            </div>
+            <div class="input-box">
+                <input name="Bairro_Assistente" id="Bairro_Assistente" type="text" required>
+                <label for="Bairro_Assistente">Bairro</label>
+            </div>
+            <div class="input-box">
+                <input name="Complemento_Assistente" id="Complemento_Assistente" type="text" required>
+                <label for="Complemento_Assistente">Complemento</label>
+            </div>
+            <div class="input-box">
+                <input name="Cidade_Assistente" id="Cidade_Assistente" type="text" required>
+                <label for="Cidade_Assistente">Cidade</label>
+            </div>
+
+            <div class="input-box">
+                <select id="Estado_Assistente" name="Estado_Assistente" class="form-select" id="inputGroupSelect04" required>
+                    <option  value="" disabled selected>Estado</option>
+                    <option>Acre (AC)</option>
+                    <option>Alagoas (AL)</option>
+                    <option>Amapá (AP)</option>
+                    <option>Amazonas (AM)</option>
+                    <option>Bahia (BH)</option>
+                    <option>Ceará (CE)</option>
+                    <option>Distrito Federal (DF)</option>
+                    <option>Espírito Santo (ES)</option>
+                    <option>Goiás (GO)</option>
+                    <option>Maranhão (MA)</option>
+                    <option>Mato Grosso (MT)</option>
+                    <option>Mato Grosso do Sul (MS)</option>
+                    <option>Minas Gerais (MG)</option>
+                    <option>Pará (PA)</option>
+                    <option>Paraíba (PB)</option>
+                    <option>Paraná (PR)</option>
+                    <option>Pernambuco (PE)</option>
+                    <option>Piauí (PI)</option>
+                    <option>Rio de Janeiro (RJ)</option>
+                    <option>Rio Grande do Norte (RN)</option>
+                    <option>Rio Grande do Sul (RS)</option>
+                    <option>Rondônia (RO)</option>
+                    <option>Roraima (RR)</option>
+                    <option>Santa Catarina (SC)</option>
+                    <option>São Paulo (SP)</option>
+                    <option>Sergipe (SE)</option>
+                    <option>Tocantis (TO)</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-phone-volume"></i></span>
+                <input name="Celular_Assistente" id="Celular_Assistente" type="tel" required>
+                <label for="Celular_Assistente">Celular</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input name="Senha_Assistente" id="Senha_Assistente" type="password" required>
+                <label for="Senha_Assistente">Senha</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input name="Confirmar_Senha_Assistente" id="Confirmar_Senha_Assistente" type="password" required>
+                <label for="Confirmar_Senha_Assistente">Confirme a senha</label>
+            </div>
+            <button type="submit" class="btn" id="btnAdm">Cadastrar</button>
+            <div class="cadastrar-adm">
+                <p>Outras opções:<a href="#" class="link-remover">Remover Assistente</a></p>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <!--GERENCIAR ANIMAIS-->
+
+  <div class="wrapper-animais">
+    <span class="icon-fecharAnimal"><i class="fa-solid fa-xmark"></i></span>
+    <div class="form-box-animal remover-An">
+        <h2>Animais Adotados</h2>
+        <form action="#">
+            <i class="fa-solid fa-chevron-down" style="position: relative; left: 270px; top: 78px;"></i>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>Selecione o animal</option>
+                <option value="1">animal 1</option>
+                <option value="2">animal 2</option>=
+            </select>
+            <button type="submit" class="btn" id="btnAnimal">Remover</button>
+            <div class="cadastrar-animal">
+                <p>Outras opções: <a href="#" class="link-cadastrarAnimal">Cadastrar Animal</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-box-animal cadastrar-animal">
+        <h2>Cadastrar Animal</h2>
+        <form method="POST" action="banco_login-cadastro.php">
+            <div class="custom-file-upload">
+                <label for="file-upload" class="custom-file-label">Selecione a imagem do animal</label>
+                <input type="file" id="file-upload" accept="image/*" onchange="previewImage(this)">
+            </div>
+            <div id="image-preview">
+                <center><img id="preview-image" src="#" alt="Preview da imagem selecionada"></center>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+                <input name="Nome_Animais" id="nomeAnimal" type="text" required>
+                <label for="nomeAnimal">Nome</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-id-card"></i></span>
+                <input name="Data_Resgate" id="DataResgate" type="date" required>
+                <label id="labeldata" for="DataResgate">Data de Resgate</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+                <input name="Faixa_Etaria" id="idadeAnimal" type="number" required>
+                <label for="idadeAnimal">Faixa Etária</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+                <input name="Especie" id="especie" type="text" required>
+                <label for="especie">Espécie</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+                <input name="Raca" id="raca" type="text" required>
+                <label for="raca">Raça</label>
+            </div>
+            <div class="input-box">
+                <i class="fa-solid fa-chevron-down" style="position: relative; left: 120px; top: 15px;"></i>
+                <select name="Sexo_Animal" id="sexoAnimal" class="form-select" id="inputGroupSelect02" required>
+                    <option value="" disabled selected>Sexo</option>
+                    <option value="1">Fêmea</option>
+                    <option value="2">Macho</option>
+                </select>
+            </div>
+            <div class="input-box">
+            <select name="Porte" id="porte" class="form-select" id="inputGroupSelect03" required>
+                    <option  value="" disabled selected>Porte</option>
+                    <option value="1">Mini (0,5 a 6Kg - 33cm)</option>
+                    <option value="2">Pequeno (6 a 15Kg - 43 cm)</option>
+                    <option value="3">Médio (15 a 25Kg - 60 cm)</option>
+                    <option value="4">Grande (25 a 45Kg - 70 cm)</option>
+                    <option value="2">Gigantes (45 a 90Kg - Sem limite de altura)</option>
+                </select>
+            <i class="fa-solid fa-chevron-down" style="position: relative; left: 120px; top: 15px;"></i>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-pen-fancy"></i></span>
+                <input name="Peso" id="peso" type="number" required>
+                <label for="peso">Peso</label>
+            </div>
+            <button type="submit" class="btn" id="btnAnimal">Cadastrar</button>
+            <div class="cadastrar-animal">
+                <p>Outras opções:<a href="#" class="link-remover-animal">Remover Animal Adotado</a></p>
+            </div>
+        </form>
+    </div>
+  </div>
+
+    <!--CONSULTA-->
+
+    <div class="consulta">
+        <span class="icon-fecharConsulta"><i class="fa-solid fa-xmark"></i></span>
+        <div class="form-box-consulta">
+            <h2>Consultar</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input id="txtconsulta" type="text" placeholder="Digite o que deseja encontrar" required>
+                </div>
+                <button type="submit" class="btn" id="btnConsulta">Procurar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/adm.js"></script>
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+</body>
+</html>

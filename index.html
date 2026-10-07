@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Ifollow</title>
+
+    <!-- Links -->
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="../fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- header -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <a href="index.html"><img id="imglogo" class="img-fluid" alt="Logo"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#comofunciona">Como funciona?</a></li>
+          <li><a class="nav-link scrollto" href="#doacao">Faça uma Doação</a></li>
+          <li><a class="nav-link scrollto" href="#adote">Adote</a></li>
+          <li><a class="nav-link scrollto" href="#apadrinhe">Apadrinhe</a></li>
+          <li><a class="getstarted scrollto" href="../login-cadastro.html">Login - Cadastro</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i> 
+      </nav>
+
+    </div>
+      <!--modo claro e modo escuro-->
+      <div>
+        <input type="checkbox" class="mode" id="mode"/>
+        <label class="label" for="mode">
+          <i class="fa-solid fa-moon fa-sm"></i>
+          <i class="fa-solid fa-sun fa-sm"></i>
+          <div class="ball"></div>
+        </label>        
+      </div>
+  </header>
+  <!--final header--> 
+
+  <!-- Hero-->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1>Quer ajudar e não sabe como?</h1>
+            <div>
+                <a href="#sobre" class="btn-get-started scrollto">Conheça nosso site!</a>
+            </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="../imgs/afolou e gatinho.png" class="img-fluid animated" alt="">
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- final Hero --> 
+
+    <!-- sobre -->
+    <section id="sobre" class="sobre">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center sobre-img">
+            <span data-tilt><img src="../imgs/dogteste.png" class="img-fluid" data-aos="flip-left" data-aos-delay="200"></span>
+          </div>
+          <div class="col-lg-6 pt-5 pt-lg-0">
+            <h3 data-aos="fade-up">Dê voz a quem não pode falar!</h3>
+            <p data-aos="fade-up" data-aos-delay="100">
+                O Instituto Ifollow acredita que todos os animais merecem ter qualidade de vida, e por isso atua com o resgate de animais em situações de risco, promovendo a recuperação e incentivando a adoção. Tão importante quanto oferecer uma nova chance a quem foi maltratado e abandonado, é a conscientização da sociedade sobre a causa animal.
+            </p>
+            <div class="row">
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <i class='bx bx-world'></i>
+                <h4>Uma realidade alarmante que pode ser mudada!</h4>
+                <p>Educação pela causa, campanhas de castração, atividade em comunidades</p>
+              </div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <i class='bx bx-donate-heart'></i>
+                <h4>Várias formas de ajudar!</h4>
+                <p>Diversas opções para você escolher como quer nos ajudar a melhorar a vida de algum peludinho!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End sobre Section -->
+
+        <!-- Como funciona -->
+    <section id="comofunciona" class="comofunciona section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Como Funciona Nosso Trabalho</h2>
+          <p>É um longo caminho a percorrer até o tão esperado momento da adoção</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-message-rounded-error' ></i></div>
+              <h4 class="title"><a>Denúncia</a></h4>
+              <ol>
+                <li><p class="description">Averiguar a gravidade</p></li>
+                <li><p class="description">Informações da veracidade</p></li>
+                <li><p class="description">Viabilização da distância</p></li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-heart-circle'></i></div>
+              <h4 class="title"><a href="">Resgate</a></h4>
+              <p class="description">Assistentes da Instituição irão receber o animal</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bxs-clinic'></i></div>
+              <h4 class="title"><a href="">Hospital</a></h4>
+                <p class="description">Exames clínicos e laboratoriais, testes, vermífugos, antipulga</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon"><i class='bx bx-test-tube'></i></div>
+              <h4 class="title"><a href="">Quarentena</a></h4>
+              <p class="description">Caso doente, o animal é encaminhado para o tratamento necessário até receber alta. Caso contrário, é encaminhado para vacinação e castração, ao final, entrando para a adoção.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- final Como funciona-->
+
+    <!--Faça uma doação-->
+    <section id="doacao" class="doacao section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Faça uma doação</h2>
+          <p>Temos várias opções para você escolher como quer nos ajudar</p>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+              <h4 class="title">Kit Limpeza</h4>
+              <p class="description">Desinfetante a base de amônia quaternária para desinfecção das baias da internação.</p>
+              <h2>R$25</h2>
+              <a href="../doe.html"><button class="btn btn-primary" id="btn" type="button">Doar Agora!</button></a>
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="fa-solid fa-stethoscope"></i></div>
+              <h4 class="title">Kit Diária de Internação</h4>
+              <p class="description">Soro, cateter para acesso, equipo esparadrapo e medicação.</p>
+              <h2>R$100</h2>
+              <a href="../doe.html"><button class="btn btn-primary" id="btn" type="button">Doar Agora!</button></a>
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="fa-solid fa-syringe"></i></div>
+              <h4 class="title">Kit Preventivo de Doenças</h4>
+                <p class="description">Vacina para imunizar cães e gatos.</p>
+                <h2>R$40</h2>
+                <a href="../doe.html"><button class="btn btn-primary" id="btn" type="button">Doar Agora!</button></a>
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon"><i class="fa-solid fa-bowl-food"></i></div>
+              <h4 class="title">Kit Alimentação</h4>
+              <p class="description">Rações, petiscos e tudo de melhor para nossos peludinhos.</p>
+              <h2>R$60</h2>
+              <a href="../doe.html"><button class="btn btn-primary" id="btn" type="button">Doar Agora!</button></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2 id="outro">Quer doar outros valores?</h2>
+          <a href="../doe.html"><button class="btn btn-primary" id="btnoutro" type="button">Clique aqui!</button></a>
+        </div>
+
+      </div>
+    </section><!-- final Faça uma doação-->
+
+    <!-- adote -->
+    <section id="adote" class="adote section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Adote um peludinho!</h2>
+          <p>Adotar é um ato de amor que transforma todas as vidas ao redor.</p>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center adote-img">
+            <span data-tilt><img src="../imgs/afolouadote.png" class="img-fluid" data-aos="flip-left" data-aos-delay="200"></span>
+          </div>
+          <div class="col-lg-6 pt-5 pt-lg-0">
+            <h3 data-aos="fade-up">Ao clicar no botão você conhecerá a história dos nossos resgatados que receberam tratamentos e cuidados no nosso hospital veterinário e agora aguardam por uma família!</h3>
+            <a href="../adote.html"><button class="btn btn-primary" id="btnadote" type="button">Quero conhecer os animais!</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- final adote-->
+
+    <!-- apadrinhe -->
+    <section id="apadrinhe" class="apadrinhe section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Apadrinhe um peludinho!</h2>
+          <p>Conheça mais jeitos de transformar a vida desses animais.</p>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center adote-img">
+            <span data-tilt><img src="../imgs/gatinhoadote..png" class="img-fluid" data-aos="flip-left" data-aos-delay="200"></span>
+          </div>
+          <div class="col-lg-6 pt-5 pt-lg-0">
+            <h3 data-aos="fade-up">Ao clicar no botão você conhecerá a história dos nossos resgatados que receberam tratamentos e cuidados no nosso hospital veterinário e agora aguardam por um final feliz!</h3>
+            <a href="../apadrinhe.html"><button class="btn btn-primary" id="btnadote" type="button">Quero conhecer os animais!</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <!--final apadrinhe-->
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="fa-solid fa-chevron-up"></i></a>
+
+ <!-- rodapé -->
+ <footer>
+  <div id="footer_content">
+      <div id="footer_contacts">
+        <div class="logofooter">
+          <img src="../imgs/afoloulogopreta.png" alt="" class="img-fluid">
+        </div>
+
+          <div id="footer_social_media">
+              <a href="#" class="footer-link" id="instagram">
+                  <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="#" class="footer-link" id="facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#" class="footer-link" id="whatsapp">
+                  <i class="fa-brands fa-whatsapp"></i>
+              </a>
+          </div>
+      </div>
+      
+      <ul class="footer-list">
+          <li>
+              <h3>Principais</h3>
+          </li>
+          <li>
+              <a href="#doacao" class="footer-link">Doar</a>
+          </li>
+          <li>
+              <a href="#adote" class="footer-link">Adotar</a>
+          </li>
+          <li>
+              <a href="#" class="footer-link">Resgatar</a>
+          </li>
+      </ul>
+
+      <ul class="footer-list">
+          <li>
+              <h3>Outros</h3>
+          </li>
+          <li>
+              <a href="#apadrinhe" class="footer-link">Apadrinhar</a>
+          </li>
+          <li>
+              <a href="#" class="footer-link">Voluntariar</a>
+          </li>
+      </ul>
+
+      <div id="footer_subscribe">
+          <h3>Fique por dentro</h3>
+
+          <p>
+              Insira seu e-mail para saber das novidades sobre a instituição
+          </p>
+
+          <div id="input_group1">
+              <input type="email1" id="email1">
+              <button>
+                  <i class="fa-regular fa-envelope"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+ <!-- final rodapé -->
+  
+<!-- Modal de Boas-vindas -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100" id="welcomeModalLabel">Bem-vindo ao Instituto Ifollow!</h5>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title text-center">Estamos em manutenção</h5>
+        <p class="text-center">
+        Nosso banco de dados está temporariamente indisponível.<br>
+        Algumas funcionalidades podem não estar acessíveis no momento.
+        </p>
+        <div class="modal-footer border-0 p-0">
+          <button type="button" class="btn btn-custom btn-primary w-100 rounded-0 m-0" data-bs-dismiss="modal">
+            Entendi
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dark-lightmode.js"></script>
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+    const myModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+    myModal.show();
+  });
+    </script>
+</body>
+</html>
